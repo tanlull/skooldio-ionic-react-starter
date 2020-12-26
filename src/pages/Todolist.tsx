@@ -22,6 +22,10 @@ import { RouteComponentProps } from 'react-router';
 
 import Todo from '../components/Todo';
 
+import { Plugins } from '@capacitor/core';
+
+const { Haptics } = Plugins;
+
 const todos = [
   { id: 1, name: 'Go To Work', deadline: 5 },
   { id: 2, name: 'Buy a Skooldio Course', deadline: 2 },
@@ -64,6 +68,7 @@ const Todolist: React.FC<RouteComponentProps> = (props) => {
               <Todo
                 {...todo}
                 onClickTask={() => {
+                  Haptics.vibrate();
                   setSelectedId(todo.id);
                   setShowActionSheet(true);
                 }}
