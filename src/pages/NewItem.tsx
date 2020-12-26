@@ -12,13 +12,15 @@ import {
   IonItem,
   IonButtons,
   IonBackButton,
-} from "@ionic/react";
-import { save, text } from "ionicons/icons";
+  IonAlert,
+} from '@ionic/react';
+import { save, text } from 'ionicons/icons';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const NewItem: React.FC = () => {
   const [taskName, setTaskName] = useState<string>();
+  const [showAlert, setShowAlert] = useState<boolean>(false);
   return (
     <IonPage>
       <IonHeader>
@@ -44,11 +46,22 @@ const NewItem: React.FC = () => {
               onIonChange={(e) => setTaskName(e.detail.value!)}></IonInput>
           </IonItem>
         </IonList>
-        <IonButton onClick={() => alert(`Task Name is ${taskName}`)}>
+        <IonButton
+          onClick={() => {
+            // alert(`Task Name is ${taskName}`)
+            setShowAlert(true);
+          }}>
           <IonIcon slot='start' icon={save} />
           <IonLabel>Save</IonLabel>
         </IonButton>
       </IonContent>
+      <IonAlert
+        onDidDismiss={() => setShowAlert(false)}
+        isOpen={showAlert}
+        header={'Hello World'}
+        subHeader={'Hello COVID-19'}
+        message={`Task Name is ${taskName}`}
+        buttons={['OK']}></IonAlert>
     </IonPage>
   );
 };
