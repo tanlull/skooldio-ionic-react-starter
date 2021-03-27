@@ -38,9 +38,9 @@ const Projects = () => {
                 </IonHeader>
 
                 <IonSlides options={{ freeMode: false }}>
-                    {projectlist.map((project) => {
+                    {projectlist.map((project, idx) => {
                         return (
-                            < IonSlide >
+                            < IonSlide key={idx}>
                                 <IonCard>
                                     <IonImg src={project.image} />
                                     <IonCardHeader>
