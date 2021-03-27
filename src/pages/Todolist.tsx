@@ -11,11 +11,15 @@ import {
   useIonViewDidEnter,
   useIonViewDidLeave,
   useIonViewWillEnter,
-  useIonViewWillLeave
+  useIonViewWillLeave,
+  IonActionSheet
 } from "@ionic/react";
-import { add } from "ionicons/icons";
 
-import React, { useEffect } from "react";
+import {ellipsisVerticalOutline} from 'ionicons/icons'
+
+import { add ,trashBin,copy} from "ionicons/icons";
+
+import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 
 import Todo from "../components/Todo";
@@ -36,7 +40,8 @@ const Todolist: React.FC<RouteComponentProps> = (props) => {
   useIonViewWillLeave(()=>console.log('Ionview WILL LEAVE  Todopage'));
   useIonViewDidLeave(()=>console.log('Ionview DID LEAVE Todopage'));
 
-
+const [showActionSheet,setShowActionSheet] = useState(false);
+const [selectedId,setSelectedId] = useState();
 
   return (
     <IonPage>
@@ -53,14 +58,35 @@ const Todolist: React.FC<RouteComponentProps> = (props) => {
         </IonHeader>
         <IonList>
           {todos.map((todo) => {
-            return <Todo {...todo} />;
-          })}
+            return (
+            <Todo {...todo} onClick={()=>{
+              setShowActionSheet(true)
+              //setSelectedId(todo.id)
+             // alert('Click')
+            
+            }}/>
+          )})}
         </IonList>
         <IonFab vertical='bottom' horizontal='end' slot='fixed'>
           <IonFabButton onClick={() => props.history.push("/new")}>
             <IonIcon icon={add} />
           </IonFabButton>
         </IonFab>
+        <IonActionSheet 
+        isOpen={showActionSheet} 
+        onDidDismiss={()=>{
+          setShowActionSheet(false)
+        }}
+        buttons={[
+          {text : 'Delete' ,
+          role: 'destructive',
+          icon: trashBin,
+           handler:()=>{alert(`Delete Task id : ${selectedId}`)}},
+          {text :'Duplicate', 
+          icon: copy,
+          handler:()=>{alert(`Duplicate Task id: ${selectedId}`)}}
+        ]}
+        />
       </IonContent>
     </IonPage>
   );
