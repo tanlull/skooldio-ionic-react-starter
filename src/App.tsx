@@ -4,6 +4,7 @@ import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Todolist from "./pages/Todolist";
 import NewItem from "./pages/NewItem";
+import Projects from "./pages/Projects.js";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -30,7 +31,8 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path='/home' component={Todolist} exact={true} />
         <Route path='/new' component={NewItem} exact={true} />
-        <Route exact path='/' render={() => <Redirect to='/home' />} />
+        <Route path='/projects' component={Projects} exact={true} />
+        <Route exact path='/' render={() => <Redirect to='/projects' />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

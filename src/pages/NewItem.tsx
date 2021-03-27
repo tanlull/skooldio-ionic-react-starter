@@ -12,6 +12,7 @@ import {
   IonItem,
   IonButtons,
   IonBackButton,
+  IonAlert,
 } from "@ionic/react";
 import { save, text } from "ionicons/icons";
 
@@ -19,6 +20,7 @@ import React, { useState } from "react";
 
 const NewItem: React.FC = () => {
   const [taskName, setTaskName] = useState<string>();
+  const [showSuccess,setShowSuccess] = useState(false);
   return (
     <IonPage>
       <IonHeader>
@@ -44,11 +46,19 @@ const NewItem: React.FC = () => {
               onIonChange={(e) => setTaskName(e.detail.value!)}></IonInput>
           </IonItem>
         </IonList>
-        <IonButton onClick={() => alert(`Task Name is ${taskName}`)}>
+        <IonButton onClick={() => setShowSuccess(true)}>
           <IonIcon slot='start' icon={save} />
           <IonLabel>Save</IonLabel>
         </IonButton>
       </IonContent>
+      <IonAlert 
+      isOpen={showSuccess}
+      header={'Saving Result'}
+      onDidDismiss={()=>setShowSuccess(false)}
+      message={`Task is ${taskName}`}
+      buttons={['OK', 'Cancel']}
+
+      ></IonAlert>
     </IonPage>
   );
 };

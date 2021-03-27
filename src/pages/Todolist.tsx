@@ -27,13 +27,13 @@ const Todolist: React.FC<RouteComponentProps> = (props) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Todolist</IonTitle>
+          <IonTitle>Todolist Tanya S.</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse='condense'>
           <IonToolbar>
-            <IonTitle size='large'>Todolist</IonTitle>
+            <IonTitle size='large'>Todolist </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
