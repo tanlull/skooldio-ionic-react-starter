@@ -24,6 +24,10 @@ import { RouteComponentProps } from "react-router";
 
 import Todo from "../components/Todo";
 
+import { Plugins } from "@capacitor/core";
+
+const { Haptics } = Plugins;
+
 const todos = [
   { id: 1, name: "Go To Work", deadline: 5 },
   { id: 2, name: "Buy a Skooldio Course", deadline: 2 },
@@ -60,6 +64,7 @@ const [selectedId,setSelectedId] = useState(0);
           {todos.map((todo) => {
             return (
             <Todo {...todo} onClick={()=>{
+              Haptics.vibrate();
               setShowActionSheet(true)
               setSelectedId(todo.id)
              // alert('Click')
