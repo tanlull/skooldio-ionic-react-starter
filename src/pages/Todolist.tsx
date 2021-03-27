@@ -41,7 +41,7 @@ const Todolist: React.FC<RouteComponentProps> = (props) => {
   useIonViewDidLeave(()=>console.log('Ionview DID LEAVE Todopage'));
 
 const [showActionSheet,setShowActionSheet] = useState(false);
-const [selectedId,setSelectedId] = useState();
+const [selectedId,setSelectedId] = useState(0);
 
   return (
     <IonPage>
@@ -61,7 +61,7 @@ const [selectedId,setSelectedId] = useState();
             return (
             <Todo {...todo} onClick={()=>{
               setShowActionSheet(true)
-              //setSelectedId(todo.id)
+              setSelectedId(todo.id)
              // alert('Click')
             
             }}/>

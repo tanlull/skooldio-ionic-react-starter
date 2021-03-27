@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonIcon, IonLoading, IonRouterOutlet, 
   IonTabBar,IonTabButton,IonTabs ,IonLabel} from "@ionic/react";
-import {home} from "ionicons/icons";
+
 import { IonReactRouter } from "@ionic/react-router";
 import Todolist from "./pages/Todolist";
 import NewItem from "./pages/NewItem";
@@ -30,6 +30,8 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+import {home,documentAttachOutline,addCircleOutline,colorPaletteOutline,giftOutline} from "ionicons/icons";
+
 const App: React.FC = () => {
   const [showLoading,setShowLoading] = useState(true);
 
@@ -42,23 +44,23 @@ const App: React.FC = () => {
       <IonTabs>
         <IonTabBar slot='bottom'>
           <IonTabButton tab='home' href='/home'>
-            <IonIcon icon='{home}' />
+            <IonIcon icon={home} />
             <IonLabel>Home</IonLabel>  
           </IonTabButton>
           <IonTabButton tab='todolist' href='/todolist'>
-            <IonIcon icon='{documentAttachOutline}' />
+            <IonIcon icon={documentAttachOutline} />
             <IonLabel>ToDo</IonLabel>  
           </IonTabButton>
           <IonTabButton tab='New Item' href='/new'>
-            <IonIcon icon='{home}' />
+            <IonIcon icon={addCircleOutline} />
             <IonLabel>New Item</IonLabel>  
           </IonTabButton>
           <IonTabButton tab='project' href='/projects'>
-            <IonIcon icon='{home}' />
+            <IonIcon icon={giftOutline} />
             <IonLabel>Projects</IonLabel>  
           </IonTabButton>
           <IonTabButton tab='gallery' href='/gallery'>
-            <IonIcon icon='{home}' />
+            <IonIcon icon={colorPaletteOutline} />
             <IonLabel>Gallery</IonLabel>  
           </IonTabButton>
         </IonTabBar>
