@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Redirect, Route } from "react-router-dom";
-import { IonApp, IonRouterOutlet } from "@ionic/react";
+import { IonApp, IonLoading, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Todolist from "./pages/Todolist";
 import NewItem from "./pages/NewItem";
@@ -25,17 +25,25 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  const [showLoading,setShowLoading] = useState(true);
+
+  setTimeout(() =>{
+    setShowLoading(false)
+  },2000)
+  return (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path='/home' component={Todolist} exact={true} />
         <Route path='/new' component={NewItem} exact={true} />
         <Route path='/projects' component={Projects} exact={true} />
-        <Route exact path='/' render={() => <Redirect to='/projects' />} />
+        <Route exact path='/' render={() => <Redirect to='/home' />} />
       </IonRouterOutlet>
     </IonReactRouter>
+    <IonLoading isOpen={showLoading}/>
   </IonApp>
-);
+
+)};
 
 export default App;

@@ -8,10 +8,14 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
+  useIonViewDidEnter,
+  useIonViewDidLeave,
+  useIonViewWillEnter,
+  useIonViewWillLeave
 } from "@ionic/react";
 import { add } from "ionicons/icons";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { RouteComponentProps } from "react-router";
 
 import Todo from "../components/Todo";
@@ -23,6 +27,17 @@ const todos = [
 ];
 
 const Todolist: React.FC<RouteComponentProps> = (props) => {
+  // useEffect(() =>{
+  //   alert('Landed on todo page')
+  // },[])
+  useIonViewWillEnter(()=>console.log('Ionview WILL Enter Todopage'));
+  useIonViewDidEnter(()=>console.log('Ionview DID Enter Todopage'));
+
+  useIonViewWillLeave(()=>console.log('Ionview WILL LEAVE  Todopage'));
+  useIonViewDidLeave(()=>console.log('Ionview DID LEAVE Todopage'));
+
+
+
   return (
     <IonPage>
       <IonHeader>
