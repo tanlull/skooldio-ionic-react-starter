@@ -44,6 +44,7 @@ const Home: React.FC = () => {
         </IonHeader>
         <IonLabel>{JSON.stringify(info)}</IonLabel>
         <IonLabel>{JSON.stringify(currentPosition)}</IonLabel>
+        <p></p>
         <IonButton onClick={clickOpenMap}>Open Map</IonButton>
       </IonContent>
     </IonPage>
